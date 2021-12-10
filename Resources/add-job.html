@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/Resources/css/style.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/ea7bbf3667.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="/Resources/css/bootstrap/bootstrap.min.css">
+
+    <!-- Bootstrap JS -->
+    <script src="/Resources/js/bootstrap/bootstrap.min.js" defer></script>
+
+    <title>JobHunter</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">JobHunter</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login/Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="add-job" class="my-5">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title text-center">Add Job Post</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="" class="row g-3">
+                            <div class="col-md-6 form-floating">
+                                <input type="text" class="form-control" id="companyName">
+                                <label for="companyName">Company Name</label>
+                            </div>
+                            <div class="col-md-6 form-floating">
+                                <input type="text" class="form-control" id="jobTitle">
+                                <label for="jobTitle">Job Title</label>
+                            </div>
+                            <div class="col-md-6 form-floating">
+                                <input type="date" class="form-control" id="applyDate">
+                                <label for="applyDate">Choose a date</label>
+                            </div>
+                            <div class="col-md-6 form-floating">
+                                <input type="text" class="form-control" id="applyPlatform">
+                                <label for="applyPlatform">Application Platform (Company site, LinkedIn etc.)</label>
+                            </div>
+                            <div class="col-12 form-floating">
+                                <input type="text" class="form-control" id="jobPost">
+                                <label for="jobPost">Job Post Link</label>
+                            </div>
+                            <div class="col-12 form-floating">
+                                <select class="form-select" id="applyStatus" aria-label="Floating label select example">
+                                    <option selected>...</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                                <label for="applyStatus">Status</label>
+                            </div>
+                            <div class="col-12 form-floating">
+                                <textarea class="form-control" id="comments" style="height: 100px"></textarea>
+                                <label for="comments">Comments</label>
+                            </div>
+                            <div class="col-12">
+                                <input type="submit" value="Submit" class="btn btn-outline-primary form-control">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+</body>
+</html>
