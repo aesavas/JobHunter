@@ -27,11 +27,13 @@ class Job(models.Model):
     def __str__(self):
         return f'{self.owner.name} --> {self.company_name} --> {self.job_title}'
 
+def _upload_path(instance, filename):
+    return instance.get_upload_path(filename)
 
 class Resume(models.Model):
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
     resume_name = models.CharField(max_length=200)
-    resume_file = models.FileField(upload_to=f'{str(owner.id)}/resumes/')
+    resume_file = models.FileField(upload_to=_upload_path)
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
@@ -39,6 +41,8 @@ class Resume(models.Model):
     def __str__(self):
         return f'{self.owner.id} --> {self.resume_name}'
 
+    def get_upload_path(self, filename):
+        return f'uploads/resumes/{self.owner.id}/{filename}'
 
     @property
     def getResumeCount(self):
