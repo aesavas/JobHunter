@@ -48,3 +48,8 @@ def login_view(request):
         else:
             messages.error(request, 'Username or password is incorrect!')
     return render(request, 'users/login.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, 'User was logged out successfully.')
+    return redirect('landing:landing-page')
