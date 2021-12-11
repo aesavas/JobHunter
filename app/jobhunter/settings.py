@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as django_messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,3 +135,12 @@ MEDIA_ROOT = Path(BASE_DIR, 'static/images')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#! Django message tags rearranged for bootstrap alerts.
+MESSAGE_TAGS = {
+        django_messages.DEBUG: 'alert-secondary',
+        django_messages.INFO: 'alert-info',
+        django_messages.SUCCESS: 'alert-success',
+        django_messages.WARNING: 'alert-warning',
+        django_messages.ERROR: 'alert-danger',
+}
