@@ -18,7 +18,7 @@ class Profile(models.Model):
 
 
 
-class Skills(models.Model):
+class Skill(models.Model):
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     skill_image = models.ImageField(upload_to = "skills/", default = "skills/skills.png")
