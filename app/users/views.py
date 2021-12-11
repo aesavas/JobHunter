@@ -1,14 +1,16 @@
-from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 
 #! Forms
 from .forms import CustomUserCreationForm
 
+#! Models
+from .models import User
+
 # Create your views here.
 """
 TODO : View List
-- Register
 - Login
 - Logout
 - Account
@@ -26,3 +28,23 @@ def sign_up_view(request):
             return redirect('')
     return render(request, 'users/sign-up.html', {'form':form,})
         
+
+
+def login_view(request):
+    form = CustomUserCreationForm()
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        try:
+            user = User.objects.get('username')
+        except:
+            messages.error(request, 'Username does not exist!')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            print('SUCCESS')
+            messages.success(request, 'User has been login successfully!')
+            return redirect('')
+        else:
+            messages.error(request, 'Username or password is incorrect!')
+    return render(request, 'users/login.html', {'form': form})
