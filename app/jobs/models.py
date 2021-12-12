@@ -6,12 +6,11 @@ from users.models import Profile
 
 class Job(models.Model):
     STATUS_CHOICE = [
-        ('applied','Applied'),
-        ('phone','Phone Interview'),
-        ('technical','Technical Interview'),
-        ('offer','Offer'),
-        ('rejected','Applied'),
-        ('applied','Applied'),
+        ('Applied','Applied'),
+        ('Phone Interview','Phone Interview'),
+        ('Technical Interview','Technical Interview'),
+        ('Offer','Offer'),
+        ('rejected','Rejected'),
     ]
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
     company_name = models.CharField(max_length=200)

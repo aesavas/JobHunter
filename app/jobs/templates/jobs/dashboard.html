@@ -1,0 +1,131 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% block title %}
+| Dashboard
+{% endblock title %}
+{% block content %}
+<main>
+    <section class="mt-5" id="profile">
+        <div class="container">
+            <div class="card">
+                <div class="row">
+                    <div class="col-sm-4 p-3 text-center">
+                        <img src="{{profile.profile_image.url}}" alt="" class="img-thumbnail rounded-circle mx-sm-2">
+                        <p class="lead mt-3">{{profile.name}}</p>
+                        <br>
+                        <div class="text-center">
+                            <a href="" class="btn btn-outline-warning d-block mx-2">Add Job</a>
+                            <br>
+                            <a href="" class="btn btn-outline-info d-block mx-2">Add Resume</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="row">
+                            <div class="col-sm-4 my-3 mx-2" id="skills">
+                                <h3>Skills : </h3>
+                                <img src="/Resources/images/skills/django.svg" alt="Django" title="Django" class="rounded-3 border p-1 m-1">
+                            </div>
+                            <div class="col-sm-7 my-3 mx-2" id="stats">
+                                <h3>Stats :</h3>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Resumes
+                                        <span class="badge bg-primary rounded-pill">{{resumes.count}}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Applied
+                                        <span class="badge bg-primary rounded-pill">{{status_count.applied}}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Phone Interview
+                                        <span class="badge bg-primary rounded-pill">{{status_count.phone}}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Technical Interview
+                                        <span class="badge bg-primary rounded-pill">{{status_count.technical}}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Offers
+                                        <span class="badge bg-success rounded-pill">{{status_count.offer}}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Rejects
+                                        <span class="badge bg-danger rounded-pill">{{status_count.rejected}}</span>
+                                    </li>
+                                </ul>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tabs">
+        <div class="container my-5">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-jobs-tab" data-bs-toggle="tab" data-bs-target="#nav-jobs" type="button" role="tab" aria-controls="nav-jobs" aria-selected="true">Jobs</button>
+                    <button class="nav-link" id="nav-resumes-tab" data-bs-toggle="tab" data-bs-target="#nav-resumes" type="button" role="tab" aria-controls="nav-resumes" aria-selected="false">Resumes</button>
+                    <button class="nav-link" id="nav-metrics-tab" data-bs-toggle="tab" data-bs-target="#nav-metrics" type="button" role="tab" aria-controls="nav-metrics" aria-selected="false">Metrics</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-jobs" role="tabpanel" aria-labelledby="nav-jobs-tab">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover border mt-5">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Ln</th>
+                                    <th scope="col">Company Name</th>
+                                    <th scope="col">Job Title</th>
+                                    <th scope="col">Job Post</th>
+                                    <th scope="col">Application Date</th>
+                                    <th scope="col">Application Platform</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for job in jobs %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td>{{job.company_name}}</td>
+                                    <td>{{job.job_title}}</td>
+                                    <td class="text-center"><a href="{{job.job_post}}" target="_blank"><i class="fas fa-external-link-alt"></i></a></td>
+                                    <td>{{job.apply_date|date:"j F Y, D"}}</td>
+                                    <td>{{job.apply_platform}}</td>
+                                    <td>{{job.status}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-resumes" role="tabpanel" aria-labelledby="nav-resumes-tab">
+                    <div class="row">
+                        {% for resume in resumes %}
+                        <div class="col-6 col-md-4 col-lg-3 mt-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{resume.resume_name}}</h5>
+                                    <p class="card-text">{{resume.description}}</p>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="#"><i class="fas fa-edit fa-2x mx-4"></i></a>
+                                    <a href=""><i class="fas fa-trash-alt fa-2x"></i></a>
+                                    <a href=""><i class="fas fa-download fa-2x mx-4"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-metrics" role="tabpanel" aria-labelledby="nav-metrics-tab">
+                    <!-- TODO: We will add some graphs. -->
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

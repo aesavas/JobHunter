@@ -19,11 +19,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+#! Landing page
+from jobs.views import landing_page_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('users.urls', namespace='auth')),
     path('account/', include('users.urls', namespace='profile')),
-    path('', include('jobs.urls', namespace='landing')),
+    path('', landing_page_view, name='landing-page'),
+    path('dashboard/', include('jobs.urls', namespace='dashboard')),
 ]
 
 

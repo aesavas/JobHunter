@@ -44,7 +44,7 @@ def login_view(request):
             login(request, user)
             print('SUCCESS')
             messages.success(request, 'User has been login successfully!')
-            return redirect('')
+            return redirect('dashboard:dashboard')
         else:
             messages.error(request, 'Username or password is incorrect!')
     return render(request, 'users/login.html', {'form': form})
@@ -52,4 +52,4 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     messages.success(request, 'User was logged out successfully.')
-    return redirect('landing:landing-page')
+    return redirect('landing-page')
