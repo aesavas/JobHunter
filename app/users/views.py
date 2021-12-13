@@ -11,8 +11,6 @@ from .models import User
 # Create your views here.
 """
 TODO : View List
-- Login
-- Logout
 - Account
 - Edit Account
 - Change Password?
@@ -27,7 +25,6 @@ def sign_up_view(request):
             messages.success(request, 'User account was created successfully!')
             return redirect('')
     return render(request, 'users/sign-up.html', {'form':form,})
-        
 
 
 def login_view(request):
@@ -49,7 +46,11 @@ def login_view(request):
             messages.error(request, 'Username or password is incorrect!')
     return render(request, 'users/login.html', {'form': form})
 
+
 def logout_view(request):
     logout(request)
     messages.success(request, 'User was logged out successfully.')
     return redirect('landing-page')
+
+def account_view(request):
+    return render(request, 'users/account.html', {'profile':request.user.profile})

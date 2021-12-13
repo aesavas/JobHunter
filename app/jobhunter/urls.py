@@ -25,7 +25,7 @@ from jobs.views import landing_page_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('users.urls', namespace='auth')),
-    path('account/', include('users.urls', namespace='profile')),
+    path('account/', include('users.urls', namespace='account')),
     path('', landing_page_view, name='landing-page'),
     path('dashboard/', include('jobs.urls', namespace='dashboard')),
 ]
