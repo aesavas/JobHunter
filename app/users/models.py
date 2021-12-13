@@ -19,9 +19,17 @@ class Profile(models.Model):
 
 
 class Skill(models.Model):
+    SKILL_BADGE_COLORS = [
+        ('bg-primary','Blue'),
+        ('bg-secondary','Grey'),
+        ('bg-success','Green'),
+        ('bg-danger','Red'),
+        ('bg-warning ','Yellow'),
+        ('bg-info','Turquoise')
+    ]
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
-    skill_image = models.ImageField(upload_to = "skills/", default = "skills/skills.png")
+    badge_color = models.CharField(max_length=200, choices=SKILL_BADGE_COLORS, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
 
