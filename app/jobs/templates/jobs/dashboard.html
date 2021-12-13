@@ -22,30 +22,11 @@
                     <div class="col-sm-8">
                         <div class="row my-3 mx-1" id="skills">
                             <h3>Skills : </h3>
+                            {% for skill in skills %}
                             <div class="col mb-2">
-                                <span class="badge p-3 bg-primary">Primary</span>
+                                <span class="badge p-3 {{skill.badge_color}}">{{skill.name}}</span>
                             </div>
-                            <div class="col">
-                                <span class="badge p-3 bg-primary">Django</span>
-                            </div>
-                            <div class="col">
-                                <span class="badge p-3 bg-primary">Microsoft SQL Server</span>
-                            </div>
-                            <div class="col">
-                                <span class="badge p-3 bg-primary">Primary</span>
-                            </div>
-                            <div class="col">
-                                <span class="badge p-3 bg-success">Java</span>
-                            </div>
-                            <div class="col">
-                                <span class="badge p-3 bg-primary">C</span>
-                            </div>
-                            <div class="col">
-                                <span class="badge p-3 bg-primary">Primary</span>
-                            </div>
-                            <div class="col">
-                                <span class="badge p-3 bg-primary">Primary</span>
-                            </div>                           
+                            {% endfor %}
                         </div>
                         <div class="row" id="stats">
                             <div class="col-sm-7 my-3 mx-2" id="stats">
@@ -134,9 +115,9 @@
                                     <p class="card-text">{{resume.description}}</p>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a href="#"><i class="fas fa-edit fa-2x mx-4"></i></a>
+                                    <a href="#"><i class="fas fa-edit fa-2x me-4"></i></a>
                                     <a href=""><i class="fas fa-trash-alt fa-2x"></i></a>
-                                    <a href=""><i class="fas fa-download fa-2x mx-4"></i></a>
+                                    <a href=""><i class="fas fa-download fa-2x ms-4"></i></a>
                                 </div>
                             </div>
                         </div>

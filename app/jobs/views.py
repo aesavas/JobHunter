@@ -9,6 +9,7 @@ def dashboard_view(request):
     profile = request.user.profile
     jobs = profile.job_set.all()
     resumes = profile.resume_set.all()
+    skills = profile.skill_set.all()
     status_count = {
         'applied' : jobs.filter(status="Applied").count(),
         'phone' : jobs.filter(status="Phone Interview").count(),
@@ -21,5 +22,6 @@ def dashboard_view(request):
         'jobs' : jobs,
         'resumes' : resumes,
         'status_count':status_count,
+        'skills': skills,
     }
     return render(request, 'jobs/dashboard.html', context)
