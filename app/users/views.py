@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.views import PasswordChangeView
 
 #! Forms
 from .forms import CustomUserCreationForm
@@ -73,3 +76,19 @@ def edit_account_view(request):
         messages.success(request, 'Your profile have been updated successfully!')
         return redirect('dashboard:dashboard')
     return render(request, 'users/edit-account.html', {'profile':profile})
+
+
+def edit_password_view(request):
+    profile = request.user.profile
+    if request.method == "POST":
+        currentPassword = request.POST['current-password']
+        if check_password(currentPassword, profile.user.password):
+            newPassword = request.POST['new-password']
+            newPassword2 = request.POST['new-password2']
+            if newPassword and newPassword2 and newPassword == newPassword2:
+                profile.user.set_password(newPassword)
+                profile.save()
+                update_session_auth_hash(request, profile.user)
+                messages.warning(request, 'Your password has been changed successfully!')
+                return redirect('dashboard:dashboard')
+    return render(request, 'users/edit-password.html')
