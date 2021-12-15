@@ -12,10 +12,6 @@ from .forms import CustomUserCreationForm
 from .models import User
 
 # Create your views here.
-"""
-TODO : View List
-- Change Password?
-"""
 
 def sign_up_view(request):
     form = CustomUserCreationForm()
