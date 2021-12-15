@@ -11,8 +11,6 @@ from .models import User
 # Create your views here.
 """
 TODO : View List
-- Account
-- Edit Account
 - Change Password?
 """
 
@@ -52,5 +50,26 @@ def logout_view(request):
     messages.success(request, 'User was logged out successfully.')
     return redirect('landing-page')
 
+
 def account_view(request):
     return render(request, 'users/account.html', {'profile':request.user.profile})
+
+
+def edit_account_view(request):
+    profile = request.user.profile
+    if request.method == "POST":
+        new_name = request.POST['name']
+        new_email = request.POST['email']
+        profile.name = new_name
+        profile.email = new_email
+        profile.user.username = new_email
+        #TODO : This solution is not professional. We need to find something better.
+        try:
+            new_profile_picture = request.FILES['profile-picture']
+            profile.profile_image = new_profile_picture
+        except:
+            pass
+        profile.save()
+        messages.success(request, 'Your profile have been updated successfully!')
+        return redirect('dashboard:dashboard')
+    return render(request, 'users/edit-account.html', {'profile':profile})

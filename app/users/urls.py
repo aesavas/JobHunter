@@ -5,6 +5,7 @@ from .views import (
     login_view,
     logout_view,
     account_view,
+    edit_account_view,
 )
 
 app_name = "apps.UsersConfig.name"
@@ -14,4 +15,5 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('', account_view, name='account'), #! Id will add to url
+    path('edit/', edit_account_view, name='edit-account'), #! Id will add to url
 ]

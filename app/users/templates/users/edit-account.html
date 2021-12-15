@@ -1,0 +1,39 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% block title %}
+| Edit Account
+{% endblock title %}
+{% block content %}
+<main>
+    <section id="add-job" class="my-5">
+        <div class="container">
+            <div class="card col-sm-6 offset-sm-3">
+                <div class="card-header">
+                    <h2 class="card-title text-center">Edit Profile</h2>
+                </div>
+                <div class="card-body">
+                    <form action="" class="row g-3" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="col-12 form-floating">
+                            <input type="text" class="form-control" id="name" name="name" value="{{profile.name}}">
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="col-12 form-floating">
+                            <input type="email" class="form-control" id="email" name="email" value="{{profile.email}}">
+                            <label for="email">Your Email</label>
+                        </div>
+                        <div class="col-12">
+                            <label for="formFile" class="form-label">Profile Picture</label><br>
+                            <p for="currently">Currently : <a href="{{profile.profile_image.url}}">{{profile.profile_image.url}}</a></p>
+                            <input class="form-control" type="file" id="formFile" name="profile-picture" value="{{profile.profile_image.url}}">
+                        </div>
+                        <div class="col-12">
+                            <input type="submit" value="Submit" class="btn btn-outline-primary form-control">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}
