@@ -17,7 +17,7 @@
                         <br><br>
                         <legend>Email : {{profile.email}}</legend>
                         <p class="text-center pt-4">
-                            <small><a href="">Edit</a> your profile or <a href="">change your password.</a></small>
+                            <small><a href="{% url 'account:edit-account' %}">Edit</a> your profile or <a href="{% url 'account:edit-password' %}">change your password.</a></small>
                         </p>
                     </div>
                 </div>
