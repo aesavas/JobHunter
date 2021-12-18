@@ -7,20 +7,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{% url 'landing-page' %}">Home</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard:dashboard' %}">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Dashboard</a>
+                    <a class="nav-link" href="{% url 'account:account' %}">Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" href="{% url 'auth:logout' %}">Logout</a>
                 </li>
+                {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Login/Sign Up</a>
+                    <a class="nav-link" href="{% url 'auth:login' %}">Login/Sign Up</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
-                </li>
+                {% endif %}
             </ul>
         </div>
     </div>
