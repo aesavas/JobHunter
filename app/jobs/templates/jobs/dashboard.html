@@ -104,7 +104,7 @@
                                         <div class="text-center">
                                             <a href=""><i class="fas fa-info-circle"></i></a>
                                             <a href="#"><i class="fas fa-edit"></i></a>
-                                            <a href=""><i class="fas fa-trash-alt"></i></a>
+                                            <a href="{% url 'dashboard:delete-job-post' job.id %}"><i class="fas fa-trash-alt"></i></a>
                                         </div>
                                     </td>
                                 </tr>

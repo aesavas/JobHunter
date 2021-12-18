@@ -1,0 +1,27 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% block title %}
+| Delete Job Post
+{% endblock title %}
+{% block content %}
+<main>
+    <section class="container">
+        <div class="row">
+            <div class="col-md-8 mt-5 offset-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <p>Are you sure you want to delete "{{job_post}}"?</p>
+                        <form action="" method="post" class="mt-3 form-inline">
+                            {% csrf_token %}
+                            <div class="">
+                                <a href="{% url 'dashboard:dashboard' %}" class="btn btn-secondary mr-4">Go Back</a>
+                                <input type="submit" value="Submit" class="btn btn-outline-info">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

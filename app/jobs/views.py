@@ -78,6 +78,19 @@ def add_job_post_view(request):
     return render(request, 'jobs/add-job.html', context)
 
 
+def delete_job_post_view(request, id):
+    profile = request.user.profile
+    job_post = profile.job_set.get(id=id)
+    if request.method == "POST":
+        job_post.delete()
+        messages.success(request, 'Your job post deleted successfully!')
+        return redirect('dashboard:dashboard')
+    context = {
+        'job_post':job_post
+    }
+    return render(request, 'jobs/delete-job.html', context)
+
+
 def add_resume_view(request):
     if request.method == "POST":
         resumeName = request.POST['resumeName']
