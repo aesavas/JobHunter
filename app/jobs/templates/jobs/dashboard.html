@@ -87,6 +87,7 @@
                                     <th scope="col">Application Date</th>
                                     <th scope="col">Application Platform</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -99,6 +100,13 @@
                                     <td>{{job.apply_date|date:"j F Y, D"}}</td>
                                     <td>{{job.apply_platform}}</td>
                                     <td>{{job.status}}</td>
+                                    <td>
+                                        <div class="text-center">
+                                            <a href=""><i class="fas fa-info-circle"></i></a>
+                                            <a href="#"><i class="fas fa-edit"></i></a>
+                                            <a href=""><i class="fas fa-trash-alt"></i></a>
+                                        </div>
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
