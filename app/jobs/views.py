@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 
 #! Models
-from .models import Job
+from .models import Job, Resume
 
 """
 !TODO LIST:
@@ -76,3 +76,19 @@ def add_job_post_view(request):
         'STATUS_CHOICE': STATUS_CHOICE,
     }
     return render(request, 'jobs/add-job.html', context)
+
+
+def add_resume_view(request):
+    if request.method == "POST":
+        resumeName = request.POST['resumeName']
+        description = request.POST['description']
+        resumeFile = request.FILES['resumeFile']
+        resume = Resume.objects.create(
+            owner = request.user.profile,
+            resume_name = resumeName,
+            description = description,
+            resume_file = resumeFile
+        )
+        resume.save()
+        return redirect('dashboard:dashboard')
+    return render(request, 'jobs/add-resume.html')
