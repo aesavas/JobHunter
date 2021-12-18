@@ -10,7 +10,7 @@ class Job(models.Model):
         ('Phone Interview','Phone Interview'),
         ('Technical Interview','Technical Interview'),
         ('Offer','Offer'),
-        ('rejected','Rejected'),
+        ('Rejected','Rejected'),
     ]
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
     company_name = models.CharField(max_length=200)
