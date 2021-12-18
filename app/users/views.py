@@ -6,7 +6,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.views import PasswordChangeView
 
 #! Forms
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, SkillCreationForm
 
 #! Models
 from .models import User
@@ -88,3 +88,20 @@ def edit_password_view(request):
                 messages.warning(request, 'Your password has been changed successfully!')
                 return redirect('dashboard:dashboard')
     return render(request, 'users/edit-password.html')
+
+
+def add_skill_view(request):
+    form = SkillCreationForm()
+    if request.method == "POST":
+        form = SkillCreationForm(request.POST)
+        if form.is_valid():
+            skill = form.save(commit=False)
+            skill.owner = request.user.profile
+            skill.save()
+            messages.success(request, 'Your skill has been added successfully!')
+            return redirect('account:account')
+
+    context = {
+        'form':form,
+    }
+    return render(request, 'users/add-skill.html', context)

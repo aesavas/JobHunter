@@ -7,6 +7,7 @@ from .views import (
     account_view,
     edit_account_view,
     edit_password_view,
+    add_skill_view,
 )
 
 app_name = "apps.UsersConfig.name"
@@ -18,4 +19,5 @@ urlpatterns = [
     path('change-password/', edit_password_view, name='edit-password'),
     path('', account_view, name='account'), #! Id will add to url
     path('edit/', edit_account_view, name='edit-account'), #! Id will add to url
+    path('add-skill/', add_skill_view, name='add-skill'),   
 ]
