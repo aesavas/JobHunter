@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="card-footer text-center">
                                     <a href="#"><i class="fas fa-edit fa-2x me-4"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt fa-2x"></i></a>
+                                    <a href="{% url 'dashboard:delete-resume' resume.id %}"><i class="fas fa-trash-alt fa-2x"></i></a>
                                     <a href="{{resume.resume_file.url}}" download><i class="fas fa-download fa-2x ms-4"></i></a>
                                 </div>
                             </div>

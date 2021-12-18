@@ -105,3 +105,16 @@ def add_resume_view(request):
         resume.save()
         return redirect('dashboard:dashboard')
     return render(request, 'jobs/add-resume.html')
+
+
+def delete_resume_view(request, id):
+    profile = request.user.profile
+    resume = profile.resume_set.get(id=id)
+    if request.method == "POST":
+        resume.delete()
+        messages.success(request, 'Your resume has been deleted successfully!')
+        return redirect('dashboard:dashboard')
+    context = {
+        'resume' : resume
+    }
+    return render(request, 'jobs/delete-resume.html', context)
