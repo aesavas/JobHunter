@@ -105,3 +105,16 @@ def add_skill_view(request):
         'form':form,
     }
     return render(request, 'users/add-skill.html', context)
+
+
+def delete_skill_view(request, id):
+    profile = request.user.profile
+    skill = profile.skill_set.get(id=id)
+    if request.method == "POST":
+        skill.delete()
+        messages.success(request, 'Your skill has been deleted successfully!')
+        return redirect('dashboard:dashboard')
+    context = {
+        'skill':skill
+    }
+    return render(request, 'users/delete-skill.html', context)

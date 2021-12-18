@@ -24,7 +24,7 @@
                             <h3>Skills : </h3>
                             {% for skill in skills %}
                             <div class="col mb-2">
-                                <span class="badge p-3 {{skill.badge_color}}">{{skill.name}}</span>
+                                <span class="badge p-2 {{skill.badge_color}}">{{skill.name}}&nbsp;&nbsp;<a href="{% url 'account:delete-skill' skill.id %}"><button class="btn-close"></button></a></span>
                             </div>
                             {% endfor %}
                         </div>
