@@ -29,7 +29,7 @@ class Skill(models.Model):
     ]
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
-    badge_color = models.CharField(max_length=200, choices=SKILL_BADGE_COLORS, null=True, blank=True)
+    badge_color = models.CharField(max_length=200, choices=SKILL_BADGE_COLORS, default="bg-primary" , null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
 
