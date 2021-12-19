@@ -91,6 +91,41 @@ def delete_job_post_view(request, id):
     return render(request, 'jobs/delete-job.html', context)
 
 
+def edit_job_post_view(request, id):
+    STATUS_CHOICE = [
+        ('Applied','Applied'),
+        ('Phone Interview','Phone Interview'),
+        ('Technical Interview','Technical Interview'),
+        ('Offer','Offer'),
+        ('Rejected','Rejected'),
+    ]
+    profile = request.user.profile
+    job_post = profile.job_set.get(id=id)
+    if request.method == "POST":
+        companyName = request.POST['companyName']
+        jobTitle = request.POST['jobTitle']
+        applyDate = request.POST['applyDate']
+        applyPlatform = request.POST['applyPlatform']
+        jobPost = request.POST['jobPost']
+        applyStatus = request.POST['applyStatus']
+        comments = request.POST['comments']
+        job_post.company_name=companyName
+        job_post.job_title = jobTitle
+        job_post.apply_date = applyDate
+        job_post.apply_platform = applyPlatform
+        job_post.status = applyStatus
+        job_post.job_post = jobPost
+        job_post.notes = comments
+        job_post.save()
+        messages.success(request, 'Your job post added successfully!')
+        return redirect('dashboard:dashboard')
+    context = {
+        'job_post':job_post,
+        'STATUS_CHOICE':STATUS_CHOICE,
+    }
+    return render(request, 'jobs/edit-job.html', context)
+
+
 def add_resume_view(request):
     if request.method == "POST":
         resumeName = request.POST['resumeName']
