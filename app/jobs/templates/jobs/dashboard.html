@@ -117,7 +117,7 @@
                         <div class="col-6 col-md-4 col-lg-3 mt-5">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{resume.resume_name}}</h5>
+                                    <a href="{% url 'dashboard:detail-resume' resume.id %}"><h5 class="card-title">{{resume.resume_name}}</h5></a>
                                     <p class="card-text">{{resume.description|truncatewords:"3"}}</p>
                                 </div>
                                 <div class="card-footer text-center">

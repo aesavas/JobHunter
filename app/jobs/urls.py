@@ -11,6 +11,7 @@ from .views import (
     add_resume_view,
     delete_resume_view,
     edit_resume_view,
+    detail_resume_view,
 )
 
 app_name = "apps.JobsConfig.name"
@@ -23,4 +24,5 @@ urlpatterns = [
     path('add-resume/', add_resume_view, name='add-resume'),
     path('delete-resume/<str:id>', delete_resume_view, name='delete-resume'),
     path('edit-resume/<str:id>', edit_resume_view, name='edit-resume'),
+    path('detail-resume/<str:id>', detail_resume_view, name='detail-resume'),
 ]

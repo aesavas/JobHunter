@@ -176,3 +176,12 @@ def edit_resume_view(request, id):
         'resume' : resume,
     }
     return render(request, 'jobs/edit-resume.html', context)
+
+
+def detail_resume_view(request, id):
+    profile = request.user.profile
+    resume = profile.resume_set.get(id=id)
+    context = {
+        'resume':resume,
+    }
+    return render(request, 'jobs/detail-resume.html', context)

@@ -1,6 +1,6 @@
 from django.db import models
 import uuid
-import datetime
+import os
 from users.models import Profile
 # Create your models here.
 
@@ -42,6 +42,10 @@ class Resume(models.Model):
 
     def get_upload_path(self, filename):
         return f'uploads/resumes/{self.owner.id}/{filename}'
+
+    @property
+    def getFilename(self):
+        return str(os.path.basename(self.resume_file.name))
 
     @property
     def getResumeCount(self):
