@@ -118,3 +118,26 @@ def delete_resume_view(request, id):
         'resume' : resume
     }
     return render(request, 'jobs/delete-resume.html', context)
+
+
+def edit_resume_view(request, id):
+    profile = request.user.profile
+    resume = profile.resume_set.get(id=id)
+    if request.method == "POST":
+        resumeName = request.POST['resumeName']
+        resumeDescription = request.POST['description']
+        resume.resume_name = resumeName
+        resume.description = resumeDescription
+        #TODO: This solution look like unprofessional, we need to change it.
+        try:
+            resumeFile = request.FILES['resumeFile']
+            resume.resume_file = resumeFile
+        except:
+            pass
+        resume.save()
+        messages.success(request, 'Your resume details has been updated successfully!')
+        return redirect('dashboard:dashboard')
+    context = {
+        'resume' : resume,
+    }
+    return render(request, 'jobs/edit-resume.html', context)
