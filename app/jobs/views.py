@@ -126,6 +126,15 @@ def edit_job_post_view(request, id):
     return render(request, 'jobs/edit-job.html', context)
 
 
+def detail_job_post_view(request, id):
+    profile = request.user.profile
+    job = profile.job_set.get(id=id)
+    context = {
+        'job' : job,
+    }
+    return render(request, 'jobs/detail-job.html', context)
+
+
 def add_resume_view(request):
     if request.method == "POST":
         resumeName = request.POST['resumeName']
