@@ -146,3 +146,11 @@ MESSAGE_TAGS = {
         django_messages.WARNING: 'alert-warning',
         django_messages.ERROR: 'alert-danger',
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.hostinger.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'resetpassword@aesavas.com'
+EMAIL_HOST_PASSWORD = 'A27s24hmm'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

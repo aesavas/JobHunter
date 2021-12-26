@@ -1,4 +1,3 @@
-from os import name
 from django.urls import path
 from . import apps
 from .views import (
