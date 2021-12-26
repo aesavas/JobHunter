@@ -20,7 +20,7 @@ def sign_up_view(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'User account was created successfully!')
-            return redirect('')
+            return redirect('auth:login')
     return render(request, 'users/sign-up.html', {'form':form,})
 
 
@@ -30,13 +30,12 @@ def login_view(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         try:
-            user = User.objects.get('username')
+            user = User.objects.get(username=username)
         except:
             messages.error(request, 'Username does not exist!')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            print('SUCCESS')
             messages.success(request, 'User has been login successfully!')
             return redirect('dashboard:dashboard')
         else:
@@ -70,7 +69,7 @@ def edit_account_view(request):
             pass
         profile.save()
         messages.success(request, 'Your profile have been updated successfully!')
-        return redirect('dashboard:dashboard')
+        return redirect('account:account')
     return render(request, 'users/edit-account.html', {'profile':profile})
 
 
@@ -86,7 +85,7 @@ def edit_password_view(request):
                 profile.save()
                 update_session_auth_hash(request, profile.user)
                 messages.warning(request, 'Your password has been changed successfully!')
-                return redirect('dashboard:dashboard')
+                return redirect('account:account')
     return render(request, 'users/edit-password.html')
 
 
@@ -99,7 +98,7 @@ def add_skill_view(request):
             skill.owner = request.user.profile
             skill.save()
             messages.success(request, 'Your skill has been added successfully!')
-            return redirect('account:account')
+            return redirect('dashboard:dashboard')
 
     context = {
         'form':form,
