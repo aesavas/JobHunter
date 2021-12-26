@@ -14,6 +14,7 @@
                     </div>
                     <div class="card-body">
                         <div class="btn-group" role="group">
+                            <a href="{% url 'dashboard:dashboard' %}" class="btn btn-secondary">Back</a>
                             <a href="{% url 'dashboard:edit-job-post' job.id %}" class="btn btn-warning">Edit</a>
                             <a href="{% url 'dashboard:delete-job-post' job.id %}" class="btn btn-danger">Delete</a>
                         </div>
