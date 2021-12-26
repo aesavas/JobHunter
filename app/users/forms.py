@@ -18,6 +18,16 @@ class CustomUserCreationForm(UserCreationForm):
         for name, field in self.fields.items():
             field.widget.attrs.update({'class':'form-control'})
 
+    def save(self, commit=True):
+        """
+            I am using Django's base password reset system. So if I do not save the user email, the system doesn't send reset email.
+        """
+        user = super().save(commit=False)
+        user.email = self.cleaned_data["username"]
+        if commit:
+            user.save()
+        return user
+
 
 class SkillCreationForm(forms.ModelForm):
     class Meta:
