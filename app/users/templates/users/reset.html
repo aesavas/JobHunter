@@ -1,0 +1,29 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% block title %}
+| Forgetten Password
+{% endblock title %}
+{% block content %}
+<main>
+    <section class="container">
+        <div class="row">
+            <div class="col-md-8 mt-5 offset-md-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Enter New Password</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Please enter your new password twice so we can verify you typed it in correctly.</p>
+                        <form action="" method="post" class="mt-5">
+                            {% csrf_token %}
+                            {{form}}
+                            <br>
+                            <input type="submit" value="Submit" class="btn btn-outline-info form-control">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

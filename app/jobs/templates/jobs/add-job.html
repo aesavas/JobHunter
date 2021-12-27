@@ -1,0 +1,60 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% block title %}
+| Add Job Post
+{% endblock title %}
+{% block content %}
+<main>
+    <section id="add-job" class="my-5">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title text-center">Add Job Post</h2>
+                </div>
+                <div class="card-body">
+                    <form action="" class="row g-3" method="POST">
+                        {% csrf_token %}
+                        <div class="col-md-6 form-floating">
+                            <input type="text" class="form-control" id="companyName" name="companyName">
+                            <label for="companyName">Company Name</label>
+                        </div>
+                        <div class="col-md-6 form-floating">
+                            <input type="text" class="form-control" id="jobTitle" name="jobTitle">
+                            <label for="jobTitle">Job Title</label>
+                        </div>
+                        <div class="col-md-6 form-floating">
+                            <input type="date" class="form-control" id="applyDate" name="applyDate">
+                            <label for="applyDate">Choose a date</label>
+                        </div>
+                        <div class="col-md-6 form-floating">
+                            <input type="text" class="form-control" id="applyPlatform" name="applyPlatform">
+                            <label for="applyPlatform">Application Platform (Company site, LinkedIn etc.)</label>
+                        </div>
+                        <div class="col-12 form-floating">
+                            <input type="text" class="form-control" id="jobPost" name="jobPost">
+                            <label for="jobPost">Job Post Link</label>
+                        </div>
+                        <div class="col-12 form-floating">
+                            <select class="form-select" id="applyStatus" aria-label="Floating label select example" name="applyStatus">
+                                {% for choice in STATUS_CHOICE %}
+                                <option value="{{choice.0}}">{{choice.1}}</option>
+                                {% endfor %}
+                            </select>
+                            <label for="applyStatus">Status</label>
+                        </div>
+                        <div class="col-12 form-floating">
+                            <textarea class="form-control" id="comments" style="height: 100px" name="comments"></textarea>
+                            <label for="comments">Comments</label>
+                        </div>
+                        <div class="col-12">
+                            <a href="{% url 'dashboard:dashboard' %}" class="btn btn-outline-secondary">Back</a>
+                            <input type="submit" value="Submit" class="btn btn-outline-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock content %}

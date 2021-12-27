@@ -1,0 +1,40 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% block title %}
+| Add Resume
+{% endblock title %}
+{% block content %}
+<main>
+    <section id="add-job" class="my-5">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title text-center">Add Resume</h2>
+                </div>
+                <div class="card-body">
+                    <form action="" class="row g-3" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="col-12 form-floating">
+                            <input type="text" class="form-control" id="resumeName" name="resumeName" required>
+                            <label for="resumeName">Resume Name</label>
+                        </div>
+                        <div class="col-12">
+                            <label for="resumeFile" class="form-label">Resume File</label>
+                            <input class="form-control" type="file" id="resumeFile" name="resumeFile" required>
+                        </div>
+                        
+                        <div class="col-12 form-floating">
+                            <textarea class="form-control" id="description" style="height: 100px" name="description" required></textarea>
+                            <label for="description">Description</label>
+                        </div>
+                        <div class="col-12">
+                            <a href="{% url 'dashboard:dashboard' %}" class="btn btn-outline-secondary">Back</a>
+                            <input type="submit" value="Submit" class="btn btn-outline-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

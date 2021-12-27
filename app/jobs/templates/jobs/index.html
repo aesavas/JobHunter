@@ -1,0 +1,29 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% block title %}
+| Home
+{% endblock title %}
+{% block content %}
+<main>
+    <section class="p-5 p-lg-2" id='showcase' >
+        <div class="container pt-5">
+            <div class="row align-items-center justify-content-between pt-5">
+                <div class="col-md">
+                    <img src="{% static 'images/apply.svg' %}" alt="Showcase" class="img-fluid d-block">
+                </div>
+                <div class="col-md p-5">
+                    <h2>JobHunter</h2>
+                    <p class="lead pt-3">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, quis!
+                    </p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa temporibus sed voluptate optio repellat rem autem, expedita iure quasi quidem, quaerat eius quisquam hic unde asperiores sequi aliquid maiores perferendis dolore debitis ad quam. Ab voluptates magnam repellendus. Repellat odio accusamus deleniti optio unde alias repellendus aliquid debitis in quas nesciunt quisquam ducimus ut modi aspernatur, maiores at ullam soluta laudantium sed pariatur ratione ab. Vero ipsam tempore maxime qui unde, quo numquam alias libero culpa perspiciatis cumque, nostrum reiciendis nihil ad, assumenda provident nesciunt! Tempore, magni! Repellat alias modi ut tempore, cupiditate quis repudiandae molestias id ea, quia minima.
+                    <hr>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, officia. Repellendus animi, nulla dolores itaque nam pariatur corporis nesciunt enim mollitia inventore temporibus deleniti accusantium recusandae exercitationem ex porro libero nobis ipsam culpa voluptates suscipit laudantium accusamus earum? Laboriosam id obcaecati, ut soluta ex dolore ipsum nobis eaque, molestiae iure repudiandae perferendis! Tempora a nihil quidem dicta iure. Tenetur, odit!
+                    </p>
+                    <a href="{% url 'auth:sign-up' %}" class="btn btn-outline-warning">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

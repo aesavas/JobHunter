@@ -1,0 +1,28 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% block title %}
+| Account
+{% endblock title %}
+{% block content %}
+<main>
+    <section id="account" class="my-5">
+        <div class="container">
+            <div class="col-sm-8 offset-sm-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title text-center">{{profile.name}}</h2>
+                    </div>
+                    <div class="card-body text-center">
+                        <img src="{{profile.profile_image.url}}" alt="" class="img-thumbnail rounded-circle mx-sm-2">
+                        <br><br>
+                        <legend>Email : {{profile.email}}</legend>
+                        <p class="text-center pt-4">
+                            <small><a href="{% url 'account:edit-account' %}">Edit</a> your profile or <a href="{% url 'account:edit-password' %}">change your password.</a></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}
