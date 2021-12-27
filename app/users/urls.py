@@ -19,8 +19,8 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('change-password/', edit_password_view, name='edit-password'),
-    path('', account_view, name='account'), #! Id will add to url
-    path('edit/', edit_account_view, name='edit-account'), #! Id will add to url
+    path('', account_view, name='account'),
+    path('edit/', edit_account_view, name='edit-account'),
     path('add-skill/', add_skill_view, name='add-skill'),
     path('delete-skill/<str:id>/', delete_skill_view, name='delete-skill'),
 ]

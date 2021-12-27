@@ -4,18 +4,6 @@ from django.shortcuts import render, redirect
 #! Models
 from .models import Job, Resume
 
-"""
-!TODO LIST:
-?Add Job Form
-?Add Resume Form
-?Add Skill Form
-?Menu Links
-?Detail Page
-?Edit and Delete Pages
-?Edit and Delete Buttons on dashboard table.
-"""
-
-
 # Create your views here.
 def landing_page_view(request):
     return render(request, 'jobs/index.html')

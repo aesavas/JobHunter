@@ -3,7 +3,6 @@ from django.urls import path
 from . import apps
 
 from .views import (
-    landing_page_view,
     dashboard_view,
     add_job_post_view,
     delete_job_post_view,
