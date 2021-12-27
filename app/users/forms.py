@@ -1,5 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordResetForm, SetPasswordForm
+from django.core.checks.messages import Error
+from django.core.exceptions import ValidationError
 
 from .models import User, Skill
 
@@ -17,6 +19,15 @@ class CustomUserCreationForm(UserCreationForm):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
         for name, field in self.fields.items():
             field.widget.attrs.update({'class':'form-control'})
+            field.required = True
+
+    def clean(self):
+        cd = self.cleaned_data
+        username = cd.get('username')
+        if User.objects.filter(username__icontains=username):
+            raise ValidationError({'username':'This username has been already registered!'})
+        super(CustomUserCreationForm, self).clean()
+        return cd
 
     def save(self, commit=True):
         """

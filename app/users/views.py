@@ -1,3 +1,4 @@
+from django.contrib.messages.api import error
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
@@ -21,6 +22,10 @@ def sign_up_view(request):
             form.save()
             messages.success(request, 'User account was created successfully!')
             return redirect('auth:login')
+        else:
+            errors = form.errors.get_json_data()
+            for e in errors.values():
+                messages.error(request, e[0]['message'])
     return render(request, 'users/sign-up.html', {'form':form,})
 
 
