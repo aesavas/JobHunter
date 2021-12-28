@@ -2,7 +2,7 @@
 
 JobHunter is a web app that organizes your job search. Also, you can store your resumes on this platform. JobHunter developed with Django.
 
-> If you want to see small showcase you can watch the video from this [link](https://www.youtube.com/watch?v=-R_1qSQOH-4)
+> If you want to see small showcase you can watch the video from this [link](https://www.youtube.com/watch?v=rWhh-FPR52A)
 
 ### 🎯 Features
 
